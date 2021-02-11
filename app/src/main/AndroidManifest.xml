@@ -11,10 +11,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ExampleProject">
-        <activity android:name=".Chats"
+        <activity android:name=".activities.Chats"
             android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar"
             ></activity>
-        <activity android:name=".MainActivity">
+        <activity android:name=".activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

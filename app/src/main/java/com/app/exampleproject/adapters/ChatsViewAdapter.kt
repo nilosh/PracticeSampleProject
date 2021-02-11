@@ -1,4 +1,4 @@
-package com.app.exampleproject.Adapters
+package com.app.exampleproject.adapters
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,15 +6,13 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.app.exampleproject.R
+import com.app.exampleproject.user.UserChats
 import com.squareup.picasso.Picasso
 import de.hdodenhof.circleimageview.CircleImageView
-import java.util.*
 
 class ChatsViewAdapter(
 
-    private val usernames: Array<String>,
-    private val descriptions: Array<String>,
-    private val profilePhotos: ArrayList<String>
+    private val list: ArrayList<UserChats>
 
 ) : RecyclerView.Adapter<ChatsViewAdapter.ViewHolder>() {
 
@@ -24,19 +22,19 @@ class ChatsViewAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.name.text = usernames[position]
-        holder.chatPreview.text = descriptions[position]
-        holder.setImage(profilePhotos[position])
+        holder.name.text = list[position].userName
+        holder.chatPreview.text = list[position].chatPreview
+        holder.setImage(list[position].userPhoto)
     }
 
     override fun getItemCount(): Int {
-        return usernames.size
+        return list.size
     }
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var name: TextView
-        var chatPreview: TextView
-        var photo: CircleImageView
+        var name: TextView = itemView.findViewById(R.id.chatUsername)
+        var chatPreview: TextView = itemView.findViewById(R.id.chatPreview)
+        var photo: CircleImageView = itemView.findViewById(R.id.chatProfilePhoto)
 
         fun setImage(url: String?) {
             Picasso.get()
@@ -44,11 +42,6 @@ class ChatsViewAdapter(
                 .into(photo)
         }
 
-        init {
-            name = itemView.findViewById(R.id.chatUsername)
-            chatPreview = itemView.findViewById(R.id.chatPreview)
-            photo = itemView.findViewById(R.id.chatProfilePhoto)
-        }
     }
 }
 

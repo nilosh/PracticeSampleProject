@@ -1,4 +1,4 @@
-package com.app.exampleproject
+package com.app.exampleproject.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,22 +7,17 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.app.exampleproject.Adapters.ChatsViewAdapter
-import de.hdodenhof.circleimageview.CircleImageView
-import java.util.*
+import com.app.exampleproject.R
+import com.app.exampleproject.adapters.ChatsViewAdapter
+import com.app.exampleproject.user.UserChats
 
 class ChatsFragment : Fragment() {
-    private lateinit var profilePicture: CircleImageView
     private var images = ArrayList<String>()
-    private lateinit var names: Array<String>
-    private lateinit var chatDescription: Array<String>
     private lateinit var recyclerView: RecyclerView
+    private val list = ArrayList<UserChats>()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
-    override fun onCreateView( inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
 
         // Inflate the layout for this fragment
@@ -31,16 +26,22 @@ class ChatsFragment : Fragment() {
         // Initialize views.
         recyclerView = view.findViewById(R.id.chatsRecyclerView)
 
-        names = resources.getStringArray(R.array.people)
-        chatDescription = resources.getStringArray(R.array.chat_desc)
-
         // Store the image URLs in an arrayList.
         images = userImages
 
+        for (i in 0..4) {
+            val userItem = UserChats(
+                resources.getStringArray(R.array.people)[i],
+                resources.getStringArray(R.array.chat_desc)[i], images[i]
+            )
+
+            list.add(userItem)
+        }
+
         // Set adapter to recycler view.
-        val chatsViewAdapter = ChatsViewAdapter(names, chatDescription, images)
-        recyclerView.setAdapter(chatsViewAdapter)
-        recyclerView.setLayoutManager(LinearLayoutManager(view.getContext()))
+        val chatsViewAdapter = ChatsViewAdapter(list)
+        recyclerView.adapter = chatsViewAdapter
+        recyclerView.layoutManager = LinearLayoutManager(view.context)
 
         return view
     }
