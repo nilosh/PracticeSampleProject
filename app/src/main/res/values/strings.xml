@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">ExampleProject</string>
+    <string name="username">username</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="already_have_an_account">Already have an account? </string>
+    <string name="login"><u>Login</u></string>
+    <string name="online_tag">Online</string>
+    <string name="description">This is chat description</string>
+    <string name="date">18-05-2021</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string-array name="people">
+        <item>Vanessa Myer</item>
+        <item>Mary Cooper</item>
+        <item>Rachel Bradford</item>
+        <item>Luke Hemmings</item>
+        <item>Peter David</item>
+    </string-array>
+    <string-array name="chat_desc">
+        <item>This is chat description.</item>
+        <item>This is chat description.</item>
+        <item>This is chat description.</item>
+        <item>This is chat description.</item>
+        <item>This is chat description.</item>
+    </string-array>
+</resources>

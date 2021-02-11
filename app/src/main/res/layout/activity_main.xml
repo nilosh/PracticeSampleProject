@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/textBoxUsername"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/username"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="@color/grey"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/imageViewProfilePhoto"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/imageViewProfilePhoto"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewProfilePhoto"
+        app:layout_constraintVertical_bias="0.065" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/imageViewProfilePhoto"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="30dp"
+        android:src="@drawable/placeholder_avatar"
+        app:layout_constraintEnd_toEndOf="@+id/textBoxOnline"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="@+id/textBoxOnline"
+        app:layout_constraintTop_toBottomOf="@+id/textBoxOnline" />
+
+    <TextView
+        android:id="@+id/textBoxSignUp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="@string/sign_up"
+        android:textColor="@color/grey"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/imageViewProfilePhoto"
+        app:layout_constraintStart_toStartOf="@+id/imageViewProfilePhoto"
+        app:layout_constraintTop_toBottomOf="@+id/textBoxUsername" />
+
+    <TextView
+        android:id="@+id/textBoxEasyToSignUp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="It's easier to sign up now"
+        android:textColor="@color/grey"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="@+id/textBoxSignUp"
+        app:layout_constraintStart_toStartOf="@+id/textBoxSignUp"
+        app:layout_constraintTop_toBottomOf="@+id/textBoxSignUp" />
+
+    <Button
+        android:id="@+id/buttonFacebook"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/facebook_sign_up"
+        android:clickable="true"
+        android:gravity="center"
+        android:paddingLeft="25dp"
+        android:drawableLeft="@drawable/ic_facebook"
+        android:text="Continue with Facebook"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="@+id/imageViewProfilePhoto"
+        app:layout_constraintStart_toStartOf="@+id/imageViewProfilePhoto"
+        app:layout_constraintTop_toBottomOf="@+id/textBoxEasyToSignUp" />
+
+    <Button
+        android:id="@+id/buttonPhoneEmail"
+        android:layout_width="230dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/email_or_phone_sign_up"
+        android:clickable="true"
+        android:text="I'll use email or phone"
+        android:gravity="center"
+        android:textAllCaps="false"
+        android:textColor="@color/grey"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="@+id/imageViewProfilePhoto"
+        app:layout_constraintStart_toStartOf="@+id/imageViewProfilePhoto"
+        app:layout_constraintTop_toBottomOf="@+id/buttonFacebook"
+        tools:ignore="MissingConstraints" />
+
+    <ImageButton
+        android:id="@+id/imageButtonLinkedin"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="28dp"
+        android:clickable="true"
+        android:background="@drawable/linkedin"
+        app:layout_constraintEnd_toStartOf="@+id/imageButtonGooglePlus"
+        app:layout_constraintTop_toTopOf="@+id/imageButtonGooglePlus"
+        tools:ignore="MissingConstraints" />
+
+    <ImageButton
+        android:id="@+id/imageButtonTwitter"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="28dp"
+        android:clickable="true"
+        android:background="@drawable/twitter"
+        app:layout_constraintStart_toEndOf="@+id/imageButtonGooglePlus"
+        app:layout_constraintTop_toTopOf="@+id/imageButtonGooglePlus"
+        tools:ignore="MissingConstraints" />
+
+    <ImageButton
+        android:id="@+id/imageButtonGooglePlus"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/gplus"
+        android:clickable="true"
+        app:layout_constraintEnd_toEndOf="@+id/buttonPhoneEmail"
+        app:layout_constraintStart_toStartOf="@+id/buttonPhoneEmail"
+        app:layout_constraintTop_toBottomOf="@+id/buttonPhoneEmail"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/textBoxHaveAnAccount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="50dp"
+        android:text="@string/already_have_an_account"
+        android:textColor="@color/grey"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="@+id/buttonPhoneEmail"
+        app:layout_constraintTop_toBottomOf="@+id/imageButtonGooglePlus" />
+
+    <TextView
+        android:id="@+id/buttonLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:text="@string/login"
+        android:textColor="@color/facebook"
+        android:textSize="12sp"
+        android:clickable="true"
+        app:layout_constraintEnd_toEndOf="@+id/buttonPhoneEmail"
+        app:layout_constraintHorizontal_bias="0.119"
+        app:layout_constraintStart_toEndOf="@+id/textBoxHaveAnAccount"
+        app:layout_constraintTop_toTopOf="@+id/textBoxHaveAnAccount" />
+
+    <TextView
+        android:id="@+id/textBoxOnline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:gravity="center"
+        android:drawableLeft="@drawable/ic_baseline_arrow_drop_down"
+        android:text="@string/online_tag"
+        android:background="@drawable/status_button"
+        android:textAlignment="center"
+        android:textColor="@color/light_green"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
