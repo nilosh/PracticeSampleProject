@@ -15,5 +15,8 @@ class Chats : AppCompatActivity() {    override fun onCreate(savedInstanceState:
             .beginTransaction()
             .replace(R.id.fragmentFrame, ChatsFragment())
             .commit()
+
+
     }
+
 }
