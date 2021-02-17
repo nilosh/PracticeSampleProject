@@ -52,12 +52,22 @@
                 android:textColor="@color/grey"
                 android:textSize="14sp" />
 
+            <EditText
+                android:id="@+id/chatPopupReplyText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/chatPopUpDesc"
+                android:layout_marginTop="20dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/grey"
+                android:hint="@string/chat_reply" />
+
             <Button
                 android:id="@+id/chatPopUpOkButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/chatPopUpDesc"
-                android:layout_marginTop="10dp"
+                android:layout_below="@+id/chatPopupReplyText"
+                android:layout_marginTop="20dp"
                 android:clickable="true"
                 android:text="Okay"
                 android:textColor="@color/white"

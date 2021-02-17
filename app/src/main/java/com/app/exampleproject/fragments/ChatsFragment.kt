@@ -7,14 +7,16 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.app.exampleproject.ChatDialogBox
 import com.app.exampleproject.R
+import com.app.exampleproject.UserChats
 import com.app.exampleproject.adapters.ChatsViewAdapter
-import com.app.exampleproject.user.UserChats
 
-class ChatsFragment : Fragment() {
+class ChatsFragment : Fragment(), ChatDialogBox.OnOkButtonCallback {
     private var images = ArrayList<String>()
     private lateinit var recyclerView: RecyclerView
     private val list = ArrayList<UserChats>()
+    private var chatsViewAdapter: ChatsViewAdapter? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -39,7 +41,7 @@ class ChatsFragment : Fragment() {
         }
 
         // Set adapter to recycler view.
-        val chatsViewAdapter = ChatsViewAdapter(list)
+        chatsViewAdapter = ChatsViewAdapter(list, this)
         recyclerView.adapter = chatsViewAdapter
         recyclerView.layoutManager = LinearLayoutManager(view.context)
 
@@ -65,4 +67,14 @@ class ChatsFragment : Fragment() {
             userImages.add(url5)
             return userImages
         }
+
+    override fun onOkButtonPressed(reply: String?, position: Int) {
+        val userChat: UserChats = list[position]
+        userChat.chatPreview = reply.toString()
+
+        chatsViewAdapter = ChatsViewAdapter(list, this)
+        recyclerView.adapter = chatsViewAdapter
+        recyclerView.layoutManager = LinearLayoutManager(this.context)
+    }
+
 }

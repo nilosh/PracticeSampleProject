@@ -1,26 +1,21 @@
 package com.app.exampleproject.adapters
 
-import android.app.AlertDialog
-import android.content.Intent
-import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.PopupMenu
-import android.widget.RelativeLayout
 import android.widget.TextView
-import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.net.toUri
 import androidx.recyclerview.widget.RecyclerView
+import com.app.exampleproject.ChatDialogBox
 import com.app.exampleproject.R
-import com.app.exampleproject.user.UserChats
+import com.app.exampleproject.UserChats
+import com.app.exampleproject.fragments.ChatsFragment
 import com.squareup.picasso.Picasso
 import de.hdodenhof.circleimageview.CircleImageView
-import kotlinx.android.synthetic.main.chat_popup.view.*
 
 class ChatsViewAdapter(
 
-    private val list: ArrayList<UserChats>
+    private val list: ArrayList<UserChats>,
+    private val fragment: ChatsFragment
 
 ) : RecyclerView.Adapter<ChatsViewAdapter.ViewHolder>() {
 
@@ -46,25 +41,15 @@ class ChatsViewAdapter(
         var photo: CircleImageView = itemView.findViewById(R.id.chatProfilePhoto)
 
         init {
-            itemView.setOnClickListener{
-                val dialogPopUp = LayoutInflater.from(itemView.context).inflate(R.layout.chat_popup, null)
+            itemView.setOnClickListener {
+                val userChat = UserChats(
+                    list[adapterPosition].userName, list[adapterPosition].chatPreview,
+                    list[adapterPosition].userPhoto
+                )
 
-                val builder = AlertDialog.Builder(itemView.context)
-                    .setView(dialogPopUp)
-
-                dialogPopUp.chatPopUpName.text = list[adapterPosition].userName
-                dialogPopUp.chatPopUpDesc.text = list[adapterPosition].chatPreview
-                Picasso.get()
-                    .load(list[adapterPosition].userPhoto)
-                    .into(dialogPopUp.chatPopUpPhoto)
-
-                val alertDialog = builder.show()
-                alertDialog.window?.setBackgroundDrawable(null)
-
-                // Set dialog dismiss.
-                dialogPopUp.chatPopUpOkButton.setOnClickListener{
-                    alertDialog.dismiss()
-                }
+                val chatDialog = ChatDialogBox(userChat, adapterPosition)
+                chatDialog.setTargetFragment(fragment, 1)
+                fragment.fragmentManager?.let { it -> chatDialog.show(it, "Chat Dialog Box") }
             }
         }
 
@@ -73,6 +58,7 @@ class ChatsViewAdapter(
                 .load(url)
                 .into(photo)
         }
+
     }
 }
 
